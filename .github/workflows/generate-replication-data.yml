@@ -1,0 +1,59 @@
+name: Generate replication data
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'code/**'
+      - 'requirements.txt'
+      - '.github/workflows/generate-replication-data.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  reproduce:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Assemble canonical replication source
+        run: |
+          if [ -f code/_part1.txt ]; then
+            cat code/_part1.txt code/_part2.txt code/_part3.txt > code/htve_global_futures_replication.py
+          fi
+
+      - name: Run complete replication model
+        run: python code/htve_global_futures_replication.py
+
+      - name: Organize generated outputs
+        run: |
+          mkdir -p data figures
+          mv code/*.csv data/
+          mv FIGURES/*.png figures/
+          rmdir FIGURES
+          rm -f code/_part1.txt code/_part2.txt code/_part3.txt
+
+      - name: Commit canonical code, regenerated data, and figures
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A code data figures
+          if git diff --cached --quiet; then
+            echo "Generated outputs already match the repository."
+          else
+            git commit -m "Generate canonical replication package"
+            git push
+          fi
