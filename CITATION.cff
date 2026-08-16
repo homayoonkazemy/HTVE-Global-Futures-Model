@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this model or its outputs, please cite the associated manuscript and this software repository."
+title: "HTVE Global Futures Model"
+type: software
+authors:
+  - family-names: "Kazemy"
+    given-names: "Homayoon"
+    orcid: "https://orcid.org/0000-0003-1929-5999"
+repository-code: "https://github.com/homayoonkazemy/HTVE-Global-Futures-Model"
+url: "https://github.com/homayoonkazemy/HTVE-Global-Futures-Model"
+license: MIT
+abstract: "Replication code and synthetic simulation outputs for global diffusion, crisis islanding, monetary competition, governance, elite capture, social-access, and abundance-futures experiments under the Homayoon Theory of Value Exchange."
+keywords:
+  - closed-loop exchange
+  - crisis resilience
+  - digital money
+  - platform governance
+  - artificial intelligence
+  - abundance
