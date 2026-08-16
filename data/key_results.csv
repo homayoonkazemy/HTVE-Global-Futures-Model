@@ -1,0 +1,13 @@
+experiment,condition,metric,value
+A,Advanced stable,final_adoption,0.5339686522527034
+A,Automated transition,final_adoption,0.5782213642185118
+A,High-inflation skilled,final_adoption,0.5536971361744047
+A,Low-income low-digital,final_adoption,0.23168446331389445
+A,Middle-income pressure,final_adoption,0.48485681864287994
+A,Resource-rich concentrated,final_adoption,0.4663884229002797
+B,emergency_htve,crisis_completion,0.2572783535186575
+B,emergency_htve,crisis_bottom_access,0.17162257156156532
+B,fiat_only,crisis_completion,0.1047013479706422
+B,fiat_only,crisis_bottom_access,0.07329094357944954
+B,prepositioned_htve,crisis_completion,0.4281892705477913
+B,prepositioned_htve,crisis_bottom_access,0.2817569036654465
